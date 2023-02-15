@@ -8,7 +8,10 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,7 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     private TextView signupRedirectText;
     private Button loginButton;
      TextView forgotPassword;
-
+     EditText email,password;
+     boolean passwordVisible;
 
 
     @Override
@@ -126,6 +130,33 @@ public class LoginActivity extends AppCompatActivity {
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
                 }
                 dialog.show();
+            }
+        });
+
+        email=findViewById(R.id.login_email);
+        password=findViewById(R.id.login_password);
+
+        password.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int Right=2;
+                if (event.getAction()==MotionEvent.ACTION_UP) {
+                    if (event.getRawX()>=password.getRight()-password.getCompoundDrawables()[Right].getBounds().width()) {
+                        int selection=password.getSelectionEnd();
+                        if (passwordVisible) {
+                            password.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.baseline_visibility_off_24,0);
+                            password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible=false;
+                        } else {
+                            password.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.baseline_visibility_24,0);
+                            password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible=true;
+                        }
+                        password.setSelection(selection);
+                        return true;
+                    }
+                }
+                return false;
             }
         });
 
