@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".ShakeItActivity">
+
+
+    <TextView
+        android:id="@+id/Timeframe"
+        android:layout_width="800dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/custom_edittext"
+        android:gravity="center"
+        android:text="@string/Display_it"
+        android:textColor="@color/green"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_line"
+        android:layout_width="1000dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="352dp"
+        android:text="-----"
+        android:backgroundTint="@color/green"
+        android:textColor="@color/green"
+        android:textSize="50sp"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/page_button"
+        android:layout_width="600dp"
+        android:layout_height="75dp"
+        android:layout_alignTop="@id/button_line"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="600dp"
+        android:backgroundTint="@color/green"
+        android:gravity="center"
+        android:text="Continue"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:visibility="gone"
+        app:cornerRadius="40dp" />
+
+
+</RelativeLayout>
