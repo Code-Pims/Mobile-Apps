@@ -18,6 +18,8 @@ import android.view.View;
 import android.graphics.Color;
 import android.util.TypedValue;
 import android.view.Gravity;
+import java.util.concurrent.TimeUnit;
+
 
 
 public class ShakeItActivity extends AppCompatActivity implements SensorEventListener {
@@ -45,6 +47,7 @@ public class ShakeItActivity extends AppCompatActivity implements SensorEventLis
         textView = findViewById(R.id.Timeframe);
         textView.setGravity(Gravity.CENTER);
         points = 0;
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 60);
 
         // Get the last time the game was played from SharedPreferences
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -53,19 +56,23 @@ public class ShakeItActivity extends AppCompatActivity implements SensorEventLis
         // Check if more than 24 hours have elapsed since the last time the game was played
         long currentTime = System.currentTimeMillis();
         long timeElapsed = currentTime - lastPlayed;
-        boolean is24HoursElapsed = timeElapsed > (60 * 60 * 1000);// (24 * 60 * 60 * 1000); << 24 hours in milliseconds
+        long durationInMillis = (10 * 60 * 1000) - timeElapsed; // Example duration in milliseconds
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(durationInMillis);
+
+        boolean is24HoursElapsed = timeElapsed > (10 * 60 * 1000);// (24 * 60 * 60 * 1000); << 24 hours in milliseconds
         if (is24HoursElapsed) {
             startShakeItGame();
         } else {
-            textView.setText("Come back after " + timeElapsed + " to play again!"); // ("Come back tomorrow to play again!");
+
+            textView.setText("Come back after " + String.valueOf(minutes) + " minutes to play again!"); // ("Come back tomorrow to play again!");
             textView.setGravity(Gravity.CENTER);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
-            textView.setTextColor(Color.WHITE);
+            textView.setTextColor(Color.BLACK);
         }
     }
 
     private void startShakeItGame() {
-        countDownTimer = new CountDownTimer(30000, 1000) {
+        countDownTimer = new CountDownTimer(60000, 1000) {
 
             @SuppressLint("SetTextI18n")
             public void onTick(long millisUntilFinished) {
@@ -76,7 +83,7 @@ public class ShakeItActivity extends AppCompatActivity implements SensorEventLis
             }
 
             public void onFinish() {
-                textView.setText("Time's up!\n\nTotal points: \n" + points);
+                textView.setText("Time's up!\nTotal points: \n" + points);
                 stopShakeItGame();
                 saveLastPlayedTime();
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
@@ -96,7 +103,7 @@ public class ShakeItActivity extends AppCompatActivity implements SensorEventLis
         float y = event.values[1];
         float z = event.values[2];
 
-        if (x > 10 || y > 10 || z > 10) {
+        if ( x > 30 || y > 30 || z > 20) {
             points++;
         }
     }
@@ -122,7 +129,7 @@ public class ShakeItActivity extends AppCompatActivity implements SensorEventLis
         long lastPlayed = prefs.getLong(LAST_PLAYED_KEY, 0);
         long currentTime = System.currentTimeMillis();
         long timeElapsed = currentTime - lastPlayed;
-        boolean is24HoursElapsed = timeElapsed > (60 * 60 * 1000); // (24 * 60 * 60 * 1000); 24 hours in milliseconds
+        boolean is24HoursElapsed = timeElapsed > (10 * 60 * 1000); // (24 * 60 * 60 * 1000); 24 hours in milliseconds
         if (is24HoursElapsed) {
             startShakeItGame();
         }
