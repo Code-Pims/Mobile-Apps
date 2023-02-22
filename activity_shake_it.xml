@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/white"
     tools:context=".ShakeItActivity">
 
 
     <TextView
         android:id="@+id/Timeframe"
         android:layout_width="800dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="200dp"
+        android:layout_height="320dp"
+        android:layout_marginTop="180dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:background="@drawable/custom_edittext"
@@ -38,16 +38,16 @@
     <Button
         android:id="@+id/page_button"
         android:layout_width="600dp"
-        android:layout_height="75dp"
+        android:layout_height="70dp"
         android:layout_alignTop="@id/button_line"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="500dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="600dp"
         android:backgroundTint="@color/green"
         android:gravity="center"
         android:text="Continue"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:visibility="gone"
         app:cornerRadius="40dp" />
 
