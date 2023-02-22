@@ -7,37 +7,69 @@
     android:background="@drawable/mainbg"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/username_TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        android:gravity="center"
+        android:text="Hi!"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/QuickBoost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
     <Button
         android:id="@+id/LeagueTeam"
-        android:layout_width="260dp"
-        android:layout_height="100dp"
+        android:layout_width="340dp"
+        android:layout_height="75dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
         android:backgroundTint="@color/green"
         android:text="LEAGUE OF TEAM"
-        android:textSize="25dp"
+        android:textSize="25sp"
         app:cornerRadius="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/HomePage"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/QuickBoost"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/QuickBoost"
-        android:layout_width="260dp"
-        android:layout_height="100dp"
+        android:layout_width="340dp"
+        android:layout_height="75dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="264dp"
+        android:layout_marginBottom="244dp"
         android:backgroundTint="@color/green"
         android:text="QUICK BOOST"
-        android:textSize="25dp"
+        android:textSize="25sp"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/HomePage"
+        android:layout_width="500dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="@color/green"
+        android:text="HOME PAGE"
+        android:textSize="30sp"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
 
 
